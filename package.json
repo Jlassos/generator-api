@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "build:watch": "npm run build -- --watch",
     "postinstall": "npm run build",
-    "build:watch": "babel src -d dist --watch",
-    "start": "nodemon dist/main.js",
+    "build:watch": "npm run build -- --watch",
+    "start": "node dist/main.js",
     "start:watch": "nodemon dist/main.js --watch dist",
-    "dev": "npm run build:watch && npm run start:watch"
+    "dev": "concurrently \"npm run build:watch\" \"npm run start:watch\""
   },
   "engines": {
     "node": "5",
